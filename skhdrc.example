@@ -1,0 +1,12 @@
+# Example skhd binding for fn-toggle.
+#
+# install.sh adds a line like this to your ~/.skhdrc automatically.
+# If you'd rather do it by hand, copy the line below into ~/.skhdrc
+# (adjust the path if you put the script somewhere else), then run:
+#
+#   skhd --restart-service
+#
+# Format:  <modifiers> - <key> : <command>
+
+# fn-toggle: switch F1–F12 <-> media keys
+ctrl + alt + cmd - f : ~/.config/fn-toggle/toggle-function-keys.sh
