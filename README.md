@@ -38,7 +38,7 @@ The toggle is a plain `defaults write` to the global `com.apple.keyboard.fnState
 ## Requirements
 
 - macOS
-- [Homebrew](https://brew.sh) (the installer uses it to install `skhd`)
+- [Homebrew](https://brew.sh) — the installer offers to install it for you if it's missing
 
 ## Install
 
@@ -48,23 +48,24 @@ cd fn-toggle
 ./install.sh
 ```
 
-The installer will:
+The installer automates the whole setup:
 
-1. Install `skhd` via Homebrew if you don't have it.
-2. Copy the toggle script to `~/.config/fn-toggle/`.
-3. Add the hotkey to your `~/.skhdrc` (safely — it won't clobber an existing config).
-4. Start the `skhd` background service.
+1. Installs **Homebrew** (with your confirmation) if you don't have it.
+2. Installs `skhd` via Homebrew.
+3. Copies the toggle script to `~/.config/fn-toggle/`.
+4. Adds the hotkey to your `~/.skhdrc` (safely — it won't clobber an existing config).
+5. Starts the `skhd` background service.
+6. Handles the Accessibility grant for you: opens the right Settings pane, copies the `skhd` path to your clipboard, then **waits and verifies** the grant actually took effect.
 
-### One manual step: Accessibility access
+### The one click only you can do: Accessibility access
 
-`skhd` needs permission to listen for the global hotkey. macOS requires you to grant this by hand:
+`skhd` needs permission to listen for the global hotkey, and macOS requires a **human click** to grant it (a script can't, by design). The installer makes this as easy as possible — when it reaches this step it will:
 
-1. **System Settings → Privacy & Security → Accessibility**
-2. If **skhd** is listed, switch it **ON**.
-3. If it's not listed, click **➕**, press **⌘⇧G**, paste the path the installer printed (e.g. `/opt/homebrew/bin/skhd`), open it, then switch it **ON**.
-4. Run `skhd --restart-service`.
+- open **System Settings → Privacy & Security → Accessibility** automatically,
+- put the `skhd` path on your clipboard, and
+- wait while you add skhd (click **➕**, press **⌘⇧G**, paste, **Open**) and switch it **ON**.
 
-That's it — press **⌃⌥⌘F** and your function keys flip.
+As soon as you flip the toggle, the installer detects it and finishes. Then press **⌃⌥⌘F** and your function keys flip.
 
 ## Usage
 
